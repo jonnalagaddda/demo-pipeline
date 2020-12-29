@@ -1,38 +1,23 @@
 pipeline {
-    agent any
-    stages {
-        stage('Example Build') {
-            when {
-                anyOf { 
-			branch 'master'; branch 'staging' 
+	agent any
+	stages {
+		stage ('build') {
+			...
 		}
-            }
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Example Deploy') {
-            when {
-                branch 'production'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
-    }
+		stage ('test: integration-&-quality') {
+			...
+		}
+		stage ('test: functional') {
+			...
+		}
+		stage ('test: load-&-security') {
+			...
+		}
+		stage ('approval') {
+			...
+		}
+		stage ('deploy:prod') {
+			...
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
